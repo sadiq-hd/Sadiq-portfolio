@@ -1,0 +1,13 @@
+<div class="container mx-auto px-4 py-8">
+    <section class="text-center py-16">
+      <!-- صورة شخصية متغيرة بناءً على اللغة -->
+      <img 
+        [src]="currentLanguage === 'en' ? 'assets/img/english-image.png' : 'assets/img/arabic-image.png'"
+        alt="Sadiq Aldubaisi" 
+        class="w-[1828px] h-[1027px] mx-auto rounded-[170px] shadow-lg">
+        
+      <h1 class="text-4xl font-bold mt-8">{{ currentLanguage === 'en' ? 'Sadiq Aldubaisi' : 'صادق الدبيسي' }}</h1>
+      <p class="text-xl mt-4">{{ currentLanguage === 'en' ? 'Software Engineer' : 'مهندس برمجيات' }}</p>
+    </section>
+  </div>
+  
