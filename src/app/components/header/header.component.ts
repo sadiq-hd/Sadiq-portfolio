@@ -1,5 +1,6 @@
+import { Component } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
 
 interface NavLink {
   label: { en: string; ar: string };
@@ -9,14 +10,13 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  imports: [CommonModule],  // تأكد من إضافة CommonModule هنا
+
   standalone: true,
-  imports: [CommonModule],
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  currentLanguage: 'en' | 'ar' = 'en';
+export class HeaderComponent {
   isMobileMenuOpen: boolean = false;
-
   navLinks: NavLink[] = [
     { label: { en: 'About me', ar: 'نبذة عني' }, path: '#about' },
     { label: { en: 'Skills', ar: 'مهاراتي' }, path: '#skills' },
@@ -27,30 +27,16 @@ export class HeaderComponent implements OnInit {
     { label: { en: 'Contact me', ar: 'تواصل معي' }, path: '#contact' }
   ];
 
-  ngOnInit(): void {
-    // التحقق مما إذا كان localStorage متاحًا في بيئة المتصفح
-    if (this.isBrowser()) {
-      const savedLanguage = localStorage.getItem('language');
-      if (savedLanguage === 'ar' || savedLanguage === 'en') {
-        this.currentLanguage = savedLanguage as 'en' | 'ar';
-      }
-    }
-  }
+  constructor(public translationService: TranslationService) {}
 
   switchLanguage(): void {
-    // تبديل اللغة وتخزينها في localStorage إذا كانت متاحة
-    this.currentLanguage = this.currentLanguage === 'en' ? 'ar' : 'en';
-    if (this.isBrowser()) {
-      localStorage.setItem('language', this.currentLanguage);
-    }
+    this.translationService.switchLanguage();
   }
 
-  toggleMobileMenu(): void {
+  get currentLanguage(): 'en' | 'ar' {
+    return this.translationService.currentLang;
+  }
+  toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
-
-  // التحقق مما إذا كنا في بيئة المتصفح
-  private isBrowser(): boolean {
-    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }

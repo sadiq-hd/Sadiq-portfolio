@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,12 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   currentLanguage: 'en' | 'ar' = 'en';
+  constructor(private translationService: TranslationService) {}
 
-  switchLanguage() {
-    this.currentLanguage = this.currentLanguage === 'en' ? 'ar' : 'en';
+  ngOnInit(): void {
+    // الاشتراك في تغييرات اللغة
+    this.translationService.currentLanguage$.subscribe(language => {
+      this.currentLanguage = language;
+    });
   }
 }
