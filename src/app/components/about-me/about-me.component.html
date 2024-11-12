@@ -1,1 +1,12 @@
-<p>about-me works!</p>
+<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="max-w-4xl mx-auto">
+    <h2 class="text-light text-4xl font-bold mb-4">
+      {{ currentLanguage === 'en' ? 'About me' : 'نبذة عني' }}
+    </h2>
+    <p class="text-[#EAFF00] font-mono text-2xl leading-relaxed ">
+      {{ currentLanguage === 'en' 
+          ? "I'm a full-stack web developer with strong experience in Angular and a solid background in ASP.NET. I enjoy building efficient and user-friendly applications, focusing on attention to detail and problem-solving. I work well on both front-end and back-end development, delivering scalable and maintainable solutions. I enjoy collaborating with teams and always aim to contribute to team success and company goals using modern web technologies."
+          : "أنا مطور ويب متكامل أمتلك خبرة قوية في Angular وخلفية قوية في ASP.NET. أستمتع ببناء تطبيقات فعالة وسهلة الاستخدام، وأركز على التفاصيل وحل المشكلات. أعمل جيداً في تطوير الواجهة الأمامية والخلفية، حيث أقدم حلول قابلة للتوسع وسهلة الصيانة. أستمتع بالعمل مع الفرق وأهدف دائمًا إلى المساهمة في نجاح الفريق وتحقيق أهداف الشركة باستخدام تقنيات الويب الحديثة."
+      }}
+    </p>
+  </div>
+  

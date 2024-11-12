@@ -1,0 +1,20 @@
+.marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 25s linear infinite alternate;
+    white-space: nowrap;
+}

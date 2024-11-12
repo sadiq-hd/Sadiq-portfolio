@@ -5,12 +5,28 @@
   <app-header></app-header>
 
   <app-home></app-home>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-  <!-- محتوى الصفحة -->
+  <section id="about-me">
+    <app-about-me></app-about-me>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+
   <main class="mt-8">
-    <router-outlet></router-outlet>
-    <!-- ترتيب المكونات الأخرى -->
-    <app-certifications></app-certifications>
-    <app-contact-me></app-contact-me>
+    <section id="certifications">
+      <app-certifications></app-certifications>
+    </section>
+    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+
+    <section id="contact-me">
+      <app-contact-me></app-contact-me>
+    </section>
+    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+
+    <section id="skills">
+      <app-skills></app-skills>
+    </section>
+    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+
   </main>
 </div>
