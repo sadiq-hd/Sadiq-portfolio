@@ -1,36 +1,52 @@
-<div class="bg-dark-blue w-full max-w-[1500px] h-[100px] rounded-[51px] mx-auto my-4 shadow-lg">
-    <nav class="flex items-center h-full px-4 md:px-10 justify-between">
-      <!-- روابط التنقل -->
-      <div class="flex items-center space-x-4 lg:space-x-8"
-           [class.flex-row-reverse]="currentLanguage === 'ar'">
+<div class="bg-dark-blue w-full max-w-[1500px] h-[50px] md:h-[70px] rounded-[15px] md:rounded-[40px] mx-auto my-2 shadow-lg">
+  <nav class="flex items-center h-full px-4 md:px-6 justify-between">
+    <!-- زر القائمة للجوال -->
+    <button (click)="toggleMobileMenu()" class="text-white lg:hidden flex items-center space-x-2">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+        <path d="M4 6H20M4 12H14M4 18H9" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    <!-- الروابط للحواسيب فقط -->
+    <div class="hidden lg:flex items-center space-x-4 lg:space-x-8"
+         [class.flex-row-reverse]="currentLanguage === 'ar'">
+      <a *ngFor="let link of navLinks" 
+         [href]="link.path" 
+         class="text-white hover:text-gray-300 text-lg font-semibold px-3 border-b-4 border-transparent hover:border-accent transition-all duration-300">
+        {{ link.label[currentLanguage] }}
+      </a>
+    </div>
+
+    <!-- زر التبديل بين اللغتين -->
+    <button 
+      (click)="switchLanguage()" 
+      class="text-white flex items-center space-x-2 border-b-2 border-transparent hover:border-accent hover:text-neutral-200 transition-all duration-300">
+      <span>{{ currentLanguage === 'en' ? 'العربية' : 'English' }}</span>
+      <svg fill="#ffffff" width="20px" height="20px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,3H14v5h2V5h14c0.6,0,1,0.4,1,1v11c0,0.6-0.4,1-1,1H17v7h-5.3L8,27.9V25H5c-0.6,0-1-0.4-1-1V13c0-0.6,0.4-1,1-1h13v-2H5c-1.7,0-3,1.3-3,3v11c0,1.7,1.3,3,3,3h1v5.1l6.3-5.1H19v-7h11c1.7,0,3-1.3,3-3V6C33,4.3,31.7,3,30,3z"></path>
+        <path d="M6.2,22.9h2.4l0.6-1.6h3.1l0.6,1.6h2.4L11.9,14H9.5L6.2,22.9z M10.7,16.5l1,3.1h-2L10.7,16.5z"></path>
+        <path d="M20,17c1.1,0,2.6-0.3,4-1c1.4,0.7,3,1,4,1v-2c0,0-1,0-2.1-0.4c1.2-1.2,2.1-3,2.1-5.6V8h-3V6h-2v2h-3v2h5.9c-0.2,1.8-1,2.9-1.9,3.6c-0.6-0.5-1.2-1.2-1.6-2.1h-2.1c0.4,1.3,1,2.3,1.8,3.1C21.1,15,20.2,15,20,15V17z"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- القائمة الجانبية للجوال -->
+  <div *ngIf="isMobileMenuOpen" class="fixed inset-y-0 left-0 w-64 bg-dark-blue shadow-lg z-50 p-6 lg:hidden transition-transform duration-300 transform" [ngClass]="{'-translate-x-full': !isMobileMenuOpen, 'translate-x-0': isMobileMenuOpen}">
+      <!-- زر إغلاق القائمة -->
+      <button (click)="toggleMobileMenu()" class="absolute top-4 right-4 text-white z-50 flex items-center justify-center w-10 h-10">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000" class="w-6 h-6">
+          <path d="M18 7L7 18M7 7L18 18" stroke="#ff0000" stroke-width="1.2"></path>
+        </svg>
+      </button>
+    
+      <!-- الروابط للجوال -->
+      <div class="mt-8 flex flex-col  space-y-4" [class.flex-row-reverse]="currentLanguage === 'ar'">
         <a *ngFor="let link of navLinks" 
-           [href]="link.path" 
+           [routerLink]="['/']" 
+           [fragment]="link.path" 
            class="text-white hover:text-gray-300 text-lg font-semibold px-3 border-b-4 border-transparent hover:border-accent transition-all duration-300">
           {{ link.label[currentLanguage] }}
         </a>
       </div>
-  
-      <!-- زر التبديل بين اللغتين ثابت في الجهة اليمنى -->
-      <button 
-        (click)="switchLanguage()" 
-        class="text-white flex items-center space-x-2 border border-accent px-3 py-1 rounded-full hover:bg-accent hover:text-primary transition-all duration-300">
-        <span>{{ currentLanguage === 'en' ? 'العربية' : 'English' }}</span>
-        <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-          <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0zm1 15h-2v-2h2v2zm2-4H7V9h6v2z"/>
-        </svg>
-      </button>
-    </nav>
-  
-    <!-- القائمة الجانبية للجوال -->
-    <div *ngIf="isMobileMenuOpen" 
-         class="lg:hidden absolute top-[100px] left-0 right-0 bg-dark-blue shadow-lg rounded-b-lg py-4 px-6 z-50"
-         [class.text-right]="currentLanguage === 'ar'" 
-         [class.text-left]="currentLanguage === 'en'">
-      <a *ngFor="let link of navLinks" 
-         [href]="link.path" 
-         class="block text-white hover:text-gray-300 text-lg font-semibold py-2 border-b border-accent/20 last:border-none transition-all duration-300">
-        {{ link.label[currentLanguage] }}
-      </a>
-    </div>
   </div>
-  
+</div>
