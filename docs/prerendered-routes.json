@@ -1,12 +1,5 @@
 {
   "routes": [
-    "/about-me",
-    "/certifications",
-    "/contact-me",
-    "/experience",
-    "/Header",
-    "/Home",
-    "/projects",
-    "/skills"
+    "/"
   ]
 }
