@@ -15,6 +15,6 @@
 
 .marquee-content {
     display: flex;
-    animation: marquee 25s linear infinite alternate;
+    animation: marquee 20s linear infinite alternate;
     white-space: nowrap;
 }
