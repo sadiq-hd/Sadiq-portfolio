@@ -1,12 +1,13 @@
-<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="max-w-4xl mx-auto">
-    <h2 class="text-light text-4xl font-bold mb-4">
-      {{ currentLanguage === 'en' ? 'About me' : 'نبذة عني' }}
+<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="container mx-auto px-2 sm:px-4 py-4 sm:py-8 overflow-hidden">
+    <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
+        {{ currentLanguage === 'en' ? 'About me' : 'نبذة عني' }}
     </h2>
+
     <p class="text-[#EAFF00] font-mono text-2xl leading-relaxed ">
-      {{ currentLanguage === 'en' 
-          ? "I'm a full-stack web developer with strong experience in Angular and a solid background in ASP.NET. I enjoy building efficient and user-friendly applications, focusing on attention to detail and problem-solving. I work well on both front-end and back-end development, delivering scalable and maintainable solutions. I enjoy collaborating with teams and always aim to contribute to team success and company goals using modern web technologies."
-          : "أنا مطور ويب متكامل أمتلك خبرة قوية في Angular وخلفية قوية في ASP.NET. أستمتع ببناء تطبيقات فعالة وسهلة الاستخدام، وأركز على التفاصيل وحل المشكلات. أعمل جيداً في تطوير الواجهة الأمامية والخلفية، حيث أقدم حلول قابلة للتوسع وسهلة الصيانة. أستمتع بالعمل مع الفرق وأهدف دائمًا إلى المساهمة في نجاح الفريق وتحقيق أهداف الشركة باستخدام تقنيات الويب الحديثة."
-      }}
-    </p>
-  </div>
-  
+        {{ currentLanguage === 'en' 
+            ? "a passionate Software Engineer with a knack for creating innovative solutions that make a difference. With experience in full-stack and mobile development and a love for modern technologies, I thrive on turning ideas into reality. Whether it's leading a team, mentoring others, or diving into code, I'm dedicated to delivering excellence in every project. Let's connect and build something amazing together!"
+            : "مهندس برمجيات شغوف بإيجاد حلول مبتكرة تُحدث فرقاً. لدي خبرة في تطوير الويب الشامل وتطبيقات الهاتف، وحب للتقنيات الحديثة، وأستمتع بتحويل الأفكار إلى واقع. سواء من خلال قيادة فريق، إرشاد الآخرين، أو الانغماس في البرمجة، أسعى دائماً لتحقيق التميز في كل مشروع. دعونا نتواصل ونبني شيئاً رائعاً معاً " 
+        }}
+      </p>
+      
+</div>
