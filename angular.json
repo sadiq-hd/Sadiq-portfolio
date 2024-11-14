@@ -13,8 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "docs",
-            "baseHref": "/Sadiq-portfolio/",
+            "outputPath": "dist/Sadiq-portfolio",
 
             "index": "src/index.html",
             "browser": "src/main.ts",

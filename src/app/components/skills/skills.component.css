@@ -17,4 +17,9 @@
     display: flex;
     animation: marquee 20s linear infinite alternate;
     white-space: nowrap;
+    animation-play-state: running; 
+}
+
+.marquee-content:hover {
+    animation-play-state: paused; 
 }
