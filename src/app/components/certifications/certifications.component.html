@@ -1,0 +1,50 @@
+<div class="container mx-auto px-4 py-8">
+    <h2 [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" 
+        class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
+      {{ currentLanguage === 'en' ? 'Certifications' : 'الشهادات' }}
+    </h2>
+  
+    <div class="relative flex justify-between items-center">
+      <!-- زر التنقل للخلف -->
+      <button 
+        (click)="prevCertification()" 
+        [disabled]="!canNavigatePrev()"
+        [ngClass]="{'text-gray-400': !canNavigatePrev(), 'text-accent': canNavigatePrev()}"
+        class="p-2 z-10"
+      >
+        <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+  
+      <!-- بطاقات الشهادات -->
+      <div class="flex space-x-4 md:space-x-6 overflow-hidden w-full">
+        <div *ngFor="let certification of displayedCertifications" 
+             class="w-[30%] h-[15rem] flex-shrink-0 rounded-lg shadow-lg overflow-hidden group transition-transform duration-500 hover:scale-105">
+          <img [src]="certification.image" alt="{{certification.name}}" class="w-full h-full object-contain">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4"
+               [ngClass]="{'items-end': currentLanguage === 'ar', 'items-start': currentLanguage === 'en'}">
+            <h3 class="text-white font-semibold text-lg">
+              {{ currentLanguage === 'en' ? certification.name : certification.nameAr }}
+            </h3>
+            <p class="text-light text-sm mt-2 hidden group-hover:block">
+              {{ currentLanguage === 'en' ? certification.description : certification.descriptionAr }}
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- زر التنقل للأمام -->
+      <button 
+        (click)="nextCertification()" 
+        [disabled]="!canNavigateNext()"
+        [ngClass]="{'text-gray-400': !canNavigateNext(), 'text-accent': canNavigateNext()}"
+        class="p-2 z-10"
+      >
+        <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
