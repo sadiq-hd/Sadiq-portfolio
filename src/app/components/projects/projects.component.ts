@@ -37,7 +37,7 @@ export class ProjectsComponent {
       nameAr: 'مشروع التخرج',
       description: 'Shuttercart is my graduation project, an online store using Angular.',
       descriptionAr: 'Shuttercart هو مشروع تخرجي، متجر إلكتروني باستخدام Angular.',
-      image: 'assets/projects/shuttercart-image.png',
+      image: 'assets/projects/morph.png',
       githubLink: 'https://github.com/your-repo/shuttercart',
     },
     {

@@ -21,7 +21,7 @@
              [ngClass]="{'items-end': currentLanguage === 'ar', 'items-start': currentLanguage === 'en'}">
           <h3 class="text-white font-semibold text-xl">{{ currentLanguage === 'en' ? project.name : project.nameAr }}</h3>
           <p class="text-light text-sm mt-2 hidden group-hover:block">{{ currentLanguage === 'en' ? project.description : project.descriptionAr }}</p>
-          <a [href]="project.githubLink" target="_blank" class="text-accent font-bold mt-2">{{ currentLanguage === 'en' ? 'GitHub' : 'مستودع GitHub' }}</a>
+          <a [href]="project.githubLink" target="_blank" class="text-accent font-bold mt-2">{{ currentLanguage === 'en' ? 'GitHub' : ' GitHub' }}</a>
         </div>
       </div>
     
