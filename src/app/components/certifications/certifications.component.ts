@@ -57,7 +57,64 @@ export class CertificationsComponent {
       descriptionAr: 'دورة شاملة عن تطوير تطبيقات الويب.',
       image: 'assets/certifications/web-app.jpg',
     },
+    {
+      name: 'JavaScript Development',
+      nameAr: 'تطوير جافاسكريبت',
+      description: 'Master the art of JavaScript development.',
+      descriptionAr: 'إتقان فن تطوير جافاسكريبت.',
+      image: 'assets/certifications/javascript.jpg',
+    },
+    {
+      name: 'ASP.NET Development',
+      nameAr: 'تطوير ASP.NET',
+      description: 'Comprehensive course on ASP.NET development.',
+      descriptionAr: 'دورة شاملة عن تطوير ASP.NET.',
+      image: 'assets/certifications/asp.jpg',
+    },
+    {
+      name: 'Dart Programming',
+      nameAr: 'برمجة Dart',
+      description: 'Learn Dart programming for Flutter development.',
+      descriptionAr: 'تعلم برمجة Dart لتطوير Flutter.',
+      image: 'assets/certifications/Dart.jpg',
+    },
+    {
+      name: 'Flutter Development',
+      nameAr: 'تطوير Flutter',
+      description: 'Master building apps with Flutter.',
+      descriptionAr: 'إتقان بناء التطبيقات باستخدام Flutter.',
+      image: 'assets/certifications/flutter.jpg',
+    },
+    {
+      name: 'Flutter Development 2',
+      nameAr: 'تطوير Flutter 2',
+      description: 'Master building apps with Flutter.',
+      descriptionAr: 'إتقان بناء التطبيقات باستخدام Flutter.',
+      image: 'assets/certifications/flutter2.jpg',
+    },
+    {
+      name: 'Cybersecurity Essentials',
+      nameAr: 'أساسيات الأمن السيبراني',
+      description: 'Understand the essentials of cybersecurity.',
+      descriptionAr: 'فهم أساسيات الأمن السيبراني.',
+      image: 'assets/certifications/Cyper.jpg',
+    },
+    {
+      name: 'Java Programming',
+      nameAr: 'برمجة جافا',
+      description: 'Learn Java programming for various applications.',
+      descriptionAr: 'تعلم برمجة جافا للتطبيقات المختلفة.',
+      image: 'assets/certifications/java.jpg',
+    },
+    {
+      name: 'Git Mastery',
+      nameAr: 'إتقان Git',
+      description: 'Master Git for version control and collaboration.',
+      descriptionAr: 'إتقان Git للتحكم في الإصدارات والتعاون.',
+      image: 'assets/certifications/git.jpg',
+    },
   ];
+  
 
   constructor(private translationService: TranslationService) {}
 
