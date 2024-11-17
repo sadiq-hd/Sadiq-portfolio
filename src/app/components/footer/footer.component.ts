@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-contact-me',
+  selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './contact-me.component.html',
-  styleUrl: './contact-me.component.css'
+  imports: [],
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css'
 })
-export class ContactMeComponent {
+export class FooterComponent {
+  currentYear: number = new Date().getFullYear();
   currentLanguage: 'en' | 'ar' = 'en';
-  constructor(private translationService: TranslationService) {}
 
+  constructor(private translationService: TranslationService) {}
 
   ngOnInit(): void {
     this.translationService.currentLanguage$.subscribe(language => {
       this.currentLanguage = language;
     });
   }
-
 }

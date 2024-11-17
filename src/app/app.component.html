@@ -1,52 +1,56 @@
-<!-- الترتيب 
-  1- About me
-  2-Skills
-  3-Project
-  4- Experience
-  5- CERTIFICATIONS
-  6- Contact me
-  7- footer   -->
-
 <div class="container mx-auto px-4">
-  <!-- شريط التنقل (الهيدر) -->
+  <!-- الخلفية -->
   <div class="fixed inset-0 -z-10 bg-[#150C2B] bg-cover bg-center"></div>
 
-  <app-header></app-header>
+  <!-- الهيدر -->
+  <header>
+    <app-header></app-header>
+  </header>
 
-  <app-home></app-home>
+  <!-- الصفحة الرئيسية -->
+  <section id="home">
+    <app-home></app-home>
+  </section>
   <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
+  <!-- عني -->
   <section id="about-me">
     <app-about-me></app-about-me>
   </section>
   <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-  <main class="mt-8">
-    <section id="certifications">
-      <app-certifications></app-certifications>
-    </section>
-    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+  <!-- المهارات -->
+  <section id="skills">
+    <app-skills></app-skills>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-    <section id="contact-me">
-      <app-contact-me></app-contact-me>
-    </section>
-    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+  <!-- المشاريع -->
+  <section id="projects">
+    <app-projects></app-projects>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-    <section id="skills">
-      <app-skills></app-skills>
-    </section>
-    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+  <!-- الخبرات -->
+  <section id="experience">
+    <app-experience></app-experience>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-    <section id="projects">
-      <app-projects></app-projects>
-    </section>
-    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+  <!-- الشهادات -->
+  <section id="certifications">
+    <app-certifications></app-certifications>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-    <section id="experience">
-      <app-experience></app-experience>
-    </section>
-    <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
+  <!-- تواصل معي -->
+  <section id="contact-me">
+    <app-contact-me></app-contact-me>
+  </section>
+  <div class="w-full h-[1px] bg-white opacity-50 my-8"></div>
 
-
-  </main>
+  <!-- الفوتر -->
+  <footer>
+    <app-footer></app-footer>
+  </footer>
 </div>

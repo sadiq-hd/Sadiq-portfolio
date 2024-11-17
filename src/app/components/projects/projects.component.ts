@@ -21,7 +21,7 @@ export class ProjectsComponent {
       nameAr: 'تطبيق Flutter',
       description: 'This is a simple flutter app for calculations.',
       descriptionAr: 'هذا تطبيق Flutter بسيط للحسابات.',
-      image: 'assets/projects/flutter-app-image.jpg',
+      image: 'assets/projects/Gpa.png',
       githubLink: 'https://github.com/your-repo/flutter-app',
     },
     {
@@ -30,6 +30,14 @@ export class ProjectsComponent {
       description: 'Shuttercart is my graduation project, an online store using Angular.',
       descriptionAr: 'Shuttercart هو مشروع تخرجي، متجر إلكتروني باستخدام Angular.',
       image: 'assets/projects/shuttercart-image.png',
+      githubLink: 'https://github.com/your-repo/shuttercart',
+    },
+    {
+      name: 'Secure Authentication System with OTP',
+      nameAr: 'نظام مصادقة آمن باستخدام OTP',
+      description: 'Shuttercart is my graduation project, an online store using Angular.',
+      descriptionAr: 'نظام مصادقة آمن باستخدام OTP في ASP.NET Core .',
+      image: 'assets/projects/asp app.png',
       githubLink: 'https://github.com/your-repo/shuttercart',
     },
     {
@@ -45,25 +53,10 @@ export class ProjectsComponent {
       nameAr: 'مشروع التخرج',
       description: 'Shuttercart is my graduation project, an online store using Angular.',
       descriptionAr: 'Shuttercart هو مشروع تخرجي، متجر إلكتروني باستخدام Angular.',
-      image: 'assets/projects/shuttercart-image.png',
+      image: 'assets/projects/python-app.png',
       githubLink: 'https://github.com/your-repo/shuttercart',
     },
-    {
-      name: 'Graduation Project',
-      nameAr: 'مشروع التخرج',
-      description: 'Shuttercart is my graduation project, an online store using Angular.',
-      descriptionAr: 'Shuttercart هو مشروع تخرجي، متجر إلكتروني باستخدام Angular.',
-      image: 'assets/projects/shuttercart-image.png',
-      githubLink: 'https://github.com/your-repo/shuttercart',
-    },
-    {
-      name: 'Graduation Project8',
-      nameAr: 'مشروع التخرج+',
-      description: 'Shuttercart is my graduation project, an online store using Angular.',
-      descriptionAr: 'Shuttercart هو مشروع تخرجي، متجر إلكتروني باستخدام Angular.',
-      image: 'assets/projects/shuttercart-image.png',
-      githubLink: 'https://github.com/your-repo/shuttercart',
-    },
+    
     // المزيد من المشاريع هنا
   ];
 

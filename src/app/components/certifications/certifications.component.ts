@@ -30,34 +30,33 @@ export class CertificationsComponent {
       image: 'assets/certifications/frontend.jpg',
     },
     {
-      name: 'Introduction to Java',
-      nameAr: 'مدخل إلى لغة Java',
-      description: 'Introductory course to Java programming.',
-      descriptionAr: 'دورة تعريفية لبرمجة Java.',
-      image: 'assets/certifications/java.jpg',
+      name: 'Learn Machine',
+      nameAr: 'تعلم الآلة',
+      description: 'Comprehensive course on machine learning.',
+      descriptionAr: 'دورة شاملة عن تعلم الآلة.',
+      image: 'assets/certifications/learn-machean.jpg',
     },
     {
-      name: 'Back-End Development',
-      nameAr: 'تطوير الواجهة الخلفية',
-      description: 'Comprehensive back-end development course.',
-      descriptionAr: 'دورة شاملة لتطوير الواجهة الخلفية.',
-      image: 'assets/certifications/backend.jpg',
+      name: 'AI Development',
+      nameAr: 'تطوير الذكاء الاصطناعي',
+      description: 'Advanced AI development techniques.',
+      descriptionAr: 'تقنيات متقدمة لتطوير الذكاء الاصطناعي.',
+      image: 'assets/certifications/machin-ai.jpg',
     },
     {
-      name: 'Back-End Development',
-      nameAr: 'تطوير الواجهة الخلفية',
-      description: 'Comprehensive back-end development course.',
-      descriptionAr: 'دورة شاملة لتطوير الواجهة الخلفية.',
-      image: 'assets/certifications/backend.jpg',
+      name: 'UX Design',
+      nameAr: 'تصميم تجربة المستخدم',
+      description: 'Comprehensive UX design course.',
+      descriptionAr: 'دورة شاملة لتصميم تجربة المستخدم.',
+      image: 'assets/certifications/UX.jpg',
     },
     {
-      name: 'Back-End Development',
-      nameAr: 'تطوير الواجهة الخلفية',
-      description: 'Comprehensive back-end development course.',
-      descriptionAr: 'دورة شاملة لتطوير الواجهة الخلفية.',
-      image: 'assets/certifications/backend.jpg',
+      name: 'Web Application Development',
+      nameAr: 'تطوير تطبيقات الويب',
+      description: 'Comprehensive course on web application development.',
+      descriptionAr: 'دورة شاملة عن تطوير تطبيقات الويب.',
+      image: 'assets/certifications/web-app.jpg',
     },
-    // المزيد من الشهادات هنا
   ];
 
   constructor(private translationService: TranslationService) {}
@@ -70,11 +69,11 @@ export class CertificationsComponent {
   }
 
   updateDisplayedCertifications() {
-    this.displayedCertifications = this.certifications.slice(this.startIndex, this.startIndex + 2);
+    this.displayedCertifications = this.certifications.slice(this.startIndex, this.startIndex + 3); // عرض 3 عناصر
   }
 
   nextCertification() {
-    if (this.startIndex + 2 < this.certifications.length) {
+    if (this.startIndex + 3 < this.certifications.length) {
       this.startIndex += 1;
       this.updateDisplayedCertifications();
     }
@@ -88,10 +87,10 @@ export class CertificationsComponent {
   }
 
   canNavigateNext(): boolean {
-    return this.startIndex + 2 < this.certifications.length;
+    return this.startIndex + 3 < this.certifications.length; // تحقق من وجود شهادات للتنقل للأمام
   }
 
   canNavigatePrev(): boolean {
-    return this.startIndex > 0;
+    return this.startIndex > 0; // تحقق من وجود شهادات للتنقل للخلف
   }
 }
