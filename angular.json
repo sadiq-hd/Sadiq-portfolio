@@ -12,6 +12,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
+<<<<<<< HEAD
          "options": {
   "outputPath": "dist/my-portfolio",
   "index": "src/index.html",
@@ -53,6 +54,54 @@
 },
 "defaultConfiguration": "production"
 
+=======
+        "options": {
+    "outputPath": "/dist",
+    "baseHref": "/Sadiq-portfolio/",
+    "index": "src/index.html",
+    "browser": "src/main.ts",
+    "polyfills": [
+        "zone.js"
+    ],
+            "tsConfig": "tsconfig.app.json",
+           "assets": [
+  "src/assets",
+  "src/favicon.ico"
+],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+>>>>>>> be0cdd061abd24a58e323cc7576ecfba348068e2
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

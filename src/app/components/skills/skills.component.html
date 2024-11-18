@@ -1,1 +1,33 @@
-<p>skills works!</p>
+<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="container mx-auto px-2 sm:px-4 py-4 sm:py-8 overflow-hidden">
+    <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
+      {{ currentLanguage === 'en' ? 'Skills' : 'مهاراتي' }}
+    </h2>
+    <br>
+    
+    <!-- قسم الصور المتحركة -->
+    <div class="marquee-wrapper overflow-hidden relative mb-8"> <!-- تعديل المسافة باستخدام mb-8 -->
+      <div class="marquee-content flex items-center space-x-4 sm:space-x-6 md:space-x-8 animate-marquee">
+        <ng-container *ngFor="let image of skillImages">
+          <img [src]="'assets/skilles/' + image" 
+               alt="Skill" 
+               class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 
+                      hover:scale-110 transition-transform duration-500">
+        </ng-container>
+        <ng-container *ngFor="let image of skillImages">
+          <img [src]="'assets/skilles/' + image" 
+               alt="Skill" 
+               class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 
+                      hover:scale-110 transition-transform duration-500">
+        </ng-container>
+      </div>
+    </div>
+  
+    <!-- قسم النصوص المتحركة -->
+    <div class="marquee-wrapper overflow-hidden relative">
+      <div class="marquee-content flex items-center space-x-4 text-[#EAFF00] text-xl font-mono animate-marquee">
+        <span *ngFor="let text of skillTexts">{{ text }} | </span>
+        <span *ngFor="let text of skillTexts">{{ text }} | </span>
+      </div>
+    </div>
+  </div>
+  
