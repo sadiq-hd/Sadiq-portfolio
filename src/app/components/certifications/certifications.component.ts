@@ -107,10 +107,10 @@ export class CertificationsComponent {
       image: 'assets/certifications/java.jpg',
     },
     {
-      name: 'Git Mastery',
-      nameAr: 'إتقان Git',
-      description: 'Master Git for version control and collaboration.',
-      descriptionAr: 'إتقان Git للتحكم في الإصدارات والتعاون.',
+      name: 'Git ',
+      nameAr: ' Git',
+      description: ' Git for version control and collaboration.',
+      descriptionAr: ' Git للتحكم في الإصدارات والتعاون.',
       image: 'assets/certifications/git.jpg',
     },
   ];
