@@ -1,4 +1,3 @@
-<!-- كود المكون -->
 <div
   [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}"
   class="container mx-auto px-2 sm:px-4 py-4 sm:py-8"
@@ -49,12 +48,15 @@
         <ul class="list-disc pl-5 rtl:pr-5 space-y-1">
           <li
             *ngFor="let tech of (currentLanguage === 'en' ? exp.technologies.en : exp.technologies.ar)"
-            class="text-[#EAFF00] font-mono leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
+            class="text-[#f4ff95] font-mono leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
           >
             {{ tech }}
           </li>
         </ul>
       </div>
+
+      <div  class="w-full h-[1px] bg-yellow-400 opacity-50 my-8"></div>
+
     </div>
   </div>
   <ng-template #noData>

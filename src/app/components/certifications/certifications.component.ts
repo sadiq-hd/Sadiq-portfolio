@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
@@ -12,8 +12,9 @@ import { TranslationService } from '../../services/translation.service';
 export class CertificationsComponent {
   currentLanguage: 'en' | 'ar' = 'en';
   startIndex = 0;
+  itemsToShow = 3; // عدد الشهادات الافتراضي
+  isBrowser: boolean;
   displayedCertifications: { name: string; nameAr: string; description: string; descriptionAr: string; image: string }[] = [];
-
   certifications = [
     {
       name: 'Back-End Development',
@@ -116,38 +117,65 @@ export class CertificationsComponent {
   ];
   
 
-  constructor(private translationService: TranslationService) {}
+  constructor(
+    private translationService: TranslationService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    this.translationService.currentLanguage$.subscribe(language => {
+    this.translationService.currentLanguage$.subscribe((language) => {
       this.currentLanguage = language;
     });
+
+    this.updateItemsToShow();
     this.updateDisplayedCertifications();
+
+    if (this.isBrowser) {
+      // تحديث عدد العناصر عند تغيير حجم الشاشة
+      window.addEventListener('resize', () => {
+        this.updateItemsToShow();
+        this.updateDisplayedCertifications();
+      });
+    }
   }
 
-  updateDisplayedCertifications() {
-    this.displayedCertifications = this.certifications.slice(this.startIndex, this.startIndex + 3); // عرض 3 عناصر
+  updateItemsToShow(): void {
+    if (this.isBrowser) {
+      const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+      this.itemsToShow = isSmallScreen ? 1 : 3;
+    } else {
+      this.itemsToShow = 3; // الافتراضي في بيئة SSR
+    }
   }
 
-  nextCertification() {
-    if (this.startIndex + 3 < this.certifications.length) {
-      this.startIndex += 1;
+  updateDisplayedCertifications(): void {
+    this.displayedCertifications = this.certifications.slice(
+      this.startIndex,
+      this.startIndex + this.itemsToShow
+    );
+  }
+
+  nextCertification(): void {
+    if (this.startIndex + this.itemsToShow < this.certifications.length) {
+      this.startIndex++;
       this.updateDisplayedCertifications();
     }
   }
 
-  prevCertification() {
+  prevCertification(): void {
     if (this.startIndex > 0) {
-      this.startIndex -= 1;
+      this.startIndex--;
       this.updateDisplayedCertifications();
     }
   }
 
   canNavigateNext(): boolean {
-    return this.startIndex + 3 < this.certifications.length; // تحقق من وجود شهادات للتنقل للأمام
+    return this.startIndex + this.itemsToShow < this.certifications.length;
   }
 
   canNavigatePrev(): boolean {
-    return this.startIndex > 0; // تحقق من وجود شهادات للتنقل للخلف
+    return this.startIndex > 0;
   }
 }
