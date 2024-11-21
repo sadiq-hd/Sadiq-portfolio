@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs"
+    "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs",
+    "build-deploy": "ng build --output-path=dist --base-href='/Sadiq-portfolio/' && npx angular-cli-ghpages --dir=dist/browser/browser"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/ssr": "^18.1.2",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
+    "tailwindcss-rtl": "^0.9.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

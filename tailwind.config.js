@@ -11,7 +11,11 @@ module.exports = {
         'light': '#FFFFFF',
         'gray': '#D9D9D9',
         'dark-blue': '#111922',
-
+      },
+      fontFamily: {
+        sans: ['Roboto', 'Arial', 'sans-serif'], // خطوط أساسية
+        mono: ['Courier New', 'monospace'], // خطوط برمجية
+        custom: ['Tajawal', 'Cairo', 'sans-serif'], // خطوط عربية
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -70,7 +74,6 @@ module.exports = {
           '50%': { transform: 'scale(1.05)' },
         },
       },
-      // إضافة تأخيرات للانيميشن
       transitionDelay: {
         '0': '0ms',
         '100': '100ms',
@@ -79,7 +82,12 @@ module.exports = {
         '400': '400ms',
         '500': '500ms',
       },
+      direction: {
+        rtl: 'rtl',
+        ltr: 'ltr',
+      },
     },
   },
-  plugins: [],
+  
+  plugins: [require("tailwindcss-rtl")],
 }

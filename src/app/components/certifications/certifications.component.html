@@ -1,48 +1,46 @@
 <div class="container mx-auto px-4 py-8">
-    <h2 [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" 
-        class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-      {{ currentLanguage === 'en' ? 'Certifications' : 'الشهادات' }}
-    </h2>
-  
-    <div class="relative flex items-center space-x-4 md:space-x-6 overflow-hidden">
-      <!-- زر التنقل للخلف -->
-      <button 
-        (click)="prevCertification()" 
-        [disabled]="!canNavigatePrev()"
-        [ngClass]="{'text-gray-400': !canNavigatePrev(), 'text-accent': canNavigatePrev()}"
-        class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 p-2"
-      >
-        <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </button>
-  
-      <!-- بطاقات الشهادات -->
-      <div *ngFor="let certification of displayedCertifications" 
-           class="relative w-[90%] md:w-[30%] h-[20rem] flex-shrink-0 rounded-lg shadow-lg overflow-hidden group transition-transform duration-500 hover:scale-105">
-        <img [src]="certification.image" alt="{{certification.name}}" class="w-full h-full object-contain">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4"
-             [ngClass]="{'items-end': currentLanguage === 'ar', 'items-start': currentLanguage === 'en'}">
-          <h3 class="text-white font-semibold text-lg">
-            {{ currentLanguage === 'en' ? certification.name : certification.nameAr }}
-          </h3>
-          <p class="text-light text-sm mt-2 hidden group-hover:block">
-            {{ currentLanguage === 'en' ? certification.description : certification.descriptionAr }}
-          </p>
-        </div>
+  <h2
+    [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}"
+    class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
+    {{ currentLanguage === 'en' ? 'Certifications' : 'الشهادات' }}
+  </h2>
+
+  <div class="relative flex items-center space-x-4 md:space-x-6 overflow-hidden">
+    <!-- زر التنقل للخلف -->
+    <button
+      (click)="prevCertification()"
+      [disabled]="!canNavigatePrev()"
+      class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 p-2 text-accent disabled:text-gray-400">
+      <svg width="24" height="24" fill="currentColor">
+        <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <!-- بطاقات الشهادات -->
+    <div
+      *ngFor="let certification of displayedCertifications"
+      class="relative w-[90%] md:w-[30%] h-[20rem] flex-shrink-0 rounded-lg shadow-lg overflow-hidden group transition-transform duration-500 hover:scale-105">
+      <img [src]="certification.image" alt="{{ certification.name }}" class="w-full h-full object-contain">
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4"
+        [ngClass]="{'items-end': currentLanguage === 'ar', 'items-start': currentLanguage === 'en'}">
+        <h3 class="text-white font-semibold text-lg">
+          {{ currentLanguage === 'en' ? certification.name : certification.nameAr }}
+        </h3>
+        <p class="text-light text-sm mt-2 hidden group-hover:block">
+          {{ currentLanguage === 'en' ? certification.description : certification.descriptionAr }}
+        </p>
       </div>
-  
-      <!-- زر التنقل للأمام -->
-      <button 
-        (click)="nextCertification()" 
-        [disabled]="!canNavigateNext()"
-        [ngClass]="{'text-gray-400': !canNavigateNext(), 'text-accent': canNavigateNext()}"
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 p-2"
-      >
-        <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </button>
     </div>
+
+    <!-- زر التنقل للأمام -->
+    <button
+      (click)="nextCertification()"
+      [disabled]="!canNavigateNext()"
+      class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 p-2 text-accent disabled:text-gray-400">
+      <svg width="24" height="24" fill="currentColor">
+        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
   </div>
-  
+</div>

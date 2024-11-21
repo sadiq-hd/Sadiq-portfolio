@@ -11,8 +11,7 @@ interface NavLink {
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  imports: [CommonModule, RouterModule],  // تأكد من إضافة CommonModule هنا
-
+  imports: [CommonModule, RouterModule],
   standalone: true,
   styleUrls: ['./header.component.css']
 })
@@ -37,7 +36,10 @@ export class HeaderComponent {
   get currentLanguage(): 'en' | 'ar' {
     return this.translationService.currentLang;
   }
-  toggleMobileMenu() {
+
+  toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    console.log('Menu toggled, current state:', this.isMobileMenuOpen); // لمتابعة الحالة أثناء التطوير
   }
+  
 }

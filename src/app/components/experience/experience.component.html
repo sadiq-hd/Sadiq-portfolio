@@ -1,22 +1,67 @@
-<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-    <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-      {{ currentLanguage === 'en' ? 'Experience' : 'الخبرة' }}
-    </h2>
-    <br>
-    <div *ngFor="let exp of experience" class="mb-4">
-      <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl  text-[#EAFF00] font-bold">
-        {{ currentLanguage === 'en' ? exp.company.en : exp.company.ar }}|  {{ currentLanguage === 'en' ? exp.date.en : exp.date.ar }}
+<div
+  [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}"
+  class="container mx-auto px-2 sm:px-4 py-4 sm:py-8"
+>
+  <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+    {{ currentLanguage === 'en' ? 'Experience' : 'الخبرة' }}
+  </h2>
+  <br />
+  <div *ngIf="experience.length; else noData">
+    <div *ngFor="let exp of experience" class="mb-6 sm:mb-8">
+      <!-- عنوان الشركة والتاريخ -->
+      <h3
+        class="text-base sm:text-lg md:text-xl lg:text-2xl text-[#EAFF00] font-mono font-bold hover:text-white transition-colors duration-300"
+      >
+        {{ currentLanguage === 'en' ? exp.company.en : exp.company.ar }} |
+        {{ currentLanguage === 'en' ? exp.date.en : exp.date.ar }}
       </h3>
 
-      <p class="text-base sm:text-lg md:text-xl lg:text-2xl  text-light font-semibold">
+      <!-- الدور الوظيفي -->
+      <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-light font-semibold font-sans">
         {{ currentLanguage === 'en' ? exp.role.en : exp.role.ar }}
       </p>
-      <br>
-      <ul class="list-disc pl-5 text-base sm:text-lg md:text-xl lg:text-2xl">
-        <li *ngFor="let point of (currentLanguage === 'en' ? exp.description.en : exp.description.ar)" class=" text-[#eaff00ce] font-mono  font-semibold leading-relaxed text-base sm:text-lg md:text-xl lg:text-2xl">
-          {{ point }}
-        </li>
-      </ul>
+      <br />
+
+      <!-- قائمة النقاط -->
+      <div
+        [ngClass]="{'rtl': currentLanguage === 'ar', 'ltr': currentLanguage === 'en'}"
+        dir="{{ currentLanguage === 'ar' ? 'rtl' : 'ltr' }}"
+      >
+        <ul class="list-disc pl-5 rtl:pr-5 space-y-2">
+          <li
+            *ngFor="let point of (currentLanguage === 'en' ? exp.description.en : exp.description.ar)"
+            class="text-[#eaff00] font-mono font-semibold leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
+          >
+            {{ point }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- التقنيات المستخدمة -->
+      <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-light font-semibold font-sans">
+        {{ currentLanguage === 'en' ? 'Technologies Used:' : 'التقنيات المستخدمة' }}
+      </p>
+      <div
+        [ngClass]="{'rtl': currentLanguage === 'ar', 'ltr': currentLanguage === 'en'}"
+        dir="{{ currentLanguage === 'ar' ? 'rtl' : 'ltr' }}"
+      >
+        <ul class="list-disc pl-5 rtl:pr-5 space-y-1">
+          <li
+            *ngFor="let tech of (currentLanguage === 'en' ? exp.technologies.en : exp.technologies.ar)"
+            class="text-[#f4ff95] font-mono leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
+          >
+            {{ tech }}
+          </li>
+        </ul>
+      </div>
+
+      <div  class="w-full h-[1px] bg-yellow-400 opacity-50 my-8"></div>
+
     </div>
   </div>
-  
+  <ng-template #noData>
+    <div class="text-center text-light text-xl font-bold py-6">
+      {{ currentLanguage === 'en' ? 'No experience data available.' : 'لا توجد بيانات خبرة متاحة.' }}
+    </div>
+  </ng-template>
+</div>
