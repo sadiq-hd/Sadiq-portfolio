@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs",
-    "build-deploy": "ng build --output-path=dist --base-href='/Sadiq-portfolio/' && npx angular-cli-ghpages --dir=dist/browser/browser"
-  },
+"build-deploy": "ng build --base-href=/Sadiq-portfolio/ && npx angular-cli-ghpages --dir=dist/my-portfolio/browser"  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.1.0",
