@@ -31,6 +31,13 @@ export class CertificationsComponent {
       image: 'assets/certifications/frontend.jpg',
     },
     {
+      name: 'ASP.NET Development',
+      nameAr: 'تطوير ASP.NET',
+      description: 'Comprehensive course on ASP.NET development.',
+      descriptionAr: 'دورة شاملة عن تطوير ASP.NET.',
+      image: 'assets/certifications/asp.jpg',
+    },
+    {
       name: 'Learn Machine',
       nameAr: 'تعلم الآلة',
       description: 'Comprehensive course on machine learning.',
@@ -65,13 +72,7 @@ export class CertificationsComponent {
       descriptionAr: 'إتقان فن تطوير جافاسكريبت.',
       image: 'assets/certifications/javascript.jpg',
     },
-    {
-      name: 'ASP.NET Development',
-      nameAr: 'تطوير ASP.NET',
-      description: 'Comprehensive course on ASP.NET development.',
-      descriptionAr: 'دورة شاملة عن تطوير ASP.NET.',
-      image: 'assets/certifications/asp.jpg',
-    },
+    
     {
       name: 'Dart Programming',
       nameAr: 'برمجة Dart',
