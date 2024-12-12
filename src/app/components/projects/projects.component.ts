@@ -23,6 +23,14 @@ export class ProjectsComponent {
   }
   projects = [
     {
+      name: "E-Commerce Frontend",
+      nameAr: "واجهة متجر إلكتروني",
+      description: "A responsive e-commerce frontend built with React.js. Features include product browsing, shopping cart functionality, and user authentication. The project uses mock data to simulate a full e-commerce experience.",
+      descriptionAr: "واجهة متجر إلكتروني متجاوبة مبنية باستخدام رياكت . تشمل الميزات تصفح المنتجات، وظائف سلة التسوق، ونظام تسجيل الدخول. يستخدم المشروع بيانات تجريبية لمحاكاة تجربة متجر إلكتروني كاملة.",
+      image: "assets/projects/ecommerce-frontend.png",
+      githubLink: "https://recat-onlinestore.netlify.app/"
+    },
+    {
       name: "GPA Calculator App",
       nameAr: "تطبيق حساب المعدل التراكمي",
       description: "A user-friendly Flutter app to calculate GPA on a 4.0 scale. Simply input your grades and credit hours to get accurate results. Designed to enhance mobile app development and design skills.",
