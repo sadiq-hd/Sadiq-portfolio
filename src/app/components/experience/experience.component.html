@@ -1,67 +1,184 @@
-<div
-  [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}"
-  class="container mx-auto px-2 sm:px-4 py-4 sm:py-8"
->
-  <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-    {{ currentLanguage === 'en' ? 'Experience' : 'الخبرة' }}
+<!-- experience.component.html - Final Fixed Version -->
+<div class="container mx-auto px-4 py-8" [attr.dir]="currentLanguage === 'ar' ? 'rtl' : 'ltr'">
+  <!-- العنوان -->
+  <h2 
+    class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center lg:text-start"
+    [class.text-right]="currentLanguage === 'ar'"
+    [class.text-left]="currentLanguage === 'en'"
+    [class.font-custom]="currentLanguage === 'ar'">
+    {{ currentLanguage === 'en' ? 'Experience' : 'الخبرة العملية' }}
   </h2>
-  <br />
-  <div *ngIf="experience.length; else noData">
-    <div *ngFor="let exp of experience" class="mb-6 sm:mb-8">
-      <!-- عنوان الشركة والتاريخ -->
-      <h3
-        class="text-base sm:text-lg md:text-xl lg:text-2xl text-[#EAFF00] font-mono font-bold hover:text-white transition-colors duration-300"
-      >
-        {{ currentLanguage === 'en' ? exp.company.en : exp.company.ar }} |
-        {{ currentLanguage === 'en' ? exp.date.en : exp.date.ar }}
-      </h3>
 
-      <!-- الدور الوظيفي -->
-      <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-light font-semibold font-sans">
-        {{ currentLanguage === 'en' ? exp.role.en : exp.role.ar }}
-      </p>
-      <br />
+  <!-- Container للخبرات مع التنقل -->
+  <div class="relative">
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="flex justify-center items-center h-96">
+      <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
+    </div>
 
-      <!-- قائمة النقاط -->
-      <div
-        [ngClass]="{'rtl': currentLanguage === 'ar', 'ltr': currentLanguage === 'en'}"
-        dir="{{ currentLanguage === 'ar' ? 'rtl' : 'ltr' }}"
-      >
-        <ul class="list-disc pl-5 rtl:pr-5 space-y-2">
-          <li
-            *ngFor="let point of (currentLanguage === 'en' ? exp.description.en : exp.description.ar)"
-            class="text-[#eaff00] font-mono font-semibold leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
-          >
-            {{ point }}
-          </li>
-        </ul>
+    <!-- المحتوى الرئيسي -->
+    <div *ngIf="!isLoading" class="relative">
+      <!-- زر التنقل للخلف -->
+      <button
+        *ngIf="experience.length > itemsToShow"
+        (click)="prevExperience()"
+        [disabled]="!canNavigatePrev()"
+        [attr.aria-label]="currentLanguage === 'en' ? 'Previous experience' : 'الخبرة السابقة'"
+        [class.left-0]="currentLanguage === 'en'"
+        [class.right-0]="currentLanguage === 'ar'"
+        [class.-translate-x-4]="currentLanguage === 'en'"
+        [class.translate-x-4]="currentLanguage === 'ar'"
+        class="absolute top-1/2 transform -translate-y-1/2 z-20 p-3 bg-primary/80 backdrop-blur-sm rounded-full text-accent hover:bg-primary hover:scale-110 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:bg-gray/20 transition-all duration-300 shadow-lg">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path 
+            [attr.d]="currentLanguage === 'en' ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'"
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round">
+          </path>
+        </svg>
+      </button>
+
+      <!-- بطاقات الخبرة -->
+      <div 
+        class="flex gap-6 overflow-hidden"
+        [class.px-12]="experience.length > itemsToShow"
+        [class.space-x-6]="currentLanguage === 'en'"
+        [class.space-x-reverse]="currentLanguage === 'ar'">
+        
+        <div
+          *ngFor="let exp of displayedExperiences; trackBy: trackByExperience"
+          class="flex-shrink-0 w-full md:w-[calc(50%-12px)] max-w-2xl mx-auto">
+          
+          <!-- البطاقة الرئيسية -->
+          <div class="bg-gradient-to-br from-primary via-dark-blue to-primary/90 rounded-2xl overflow-hidden shadow-2xl hover:shadow-accent/20 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 group relative min-h-[28rem]">
+            
+            <!-- Header مع شعار الشركة -->
+            <div class="relative h-20 bg-gradient-to-r from-accent/10 to-accent/5 flex items-center justify-between p-6">
+              <!-- شعار الشركة -->
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                  </svg>
+                </div>
+                
+                <!-- نوع العمل -->
+                <div class="flex items-center gap-2">
+                  <span 
+                    [class]="getTypeColor(exp.type)"
+                    class="px-3 py-1 text-xs font-semibold rounded-full border">
+                    {{ currentLanguage === 'en' ? getTypeLabel(exp.type).en : getTypeLabel(exp.type).ar }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- التاريخ -->
+              <div class="text-accent text-sm font-medium" [class.text-right]="currentLanguage === 'ar'">
+                {{ currentLanguage === 'en' ? exp.date.en : exp.date.ar }}
+              </div>
+            </div>
+
+            <!-- محتوى البطاقة -->
+            <div class="p-6 flex flex-col justify-between relative flex-1">
+              <!-- اسم الشركة والمنصب -->
+              <div class="mb-4">
+                <h3 
+                  class="text-accent font-bold text-xl mb-2 group-hover:text-light transition-colors duration-300"
+                  [class.font-custom]="currentLanguage === 'ar'"
+                  [class.text-right]="currentLanguage === 'ar'">
+                  {{ currentLanguage === 'en' ? exp.company.en : exp.company.ar }}
+                </h3>
+                
+                <h4 
+                  class="text-light font-semibold text-lg mb-3 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  [class.font-custom]="currentLanguage === 'ar'"
+                  [class.text-right]="currentLanguage === 'ar'">
+                  {{ currentLanguage === 'en' ? exp.role.en : exp.role.ar }}
+                </h4>
+
+                <!-- الموقع -->
+                <div class="flex items-center gap-2 text-gray text-sm mb-4" [class.justify-end]="currentLanguage === 'ar'">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span>{{ currentLanguage === 'en' ? exp.location.en : exp.location.ar }}</span>
+                </div>
+              </div>
+
+              <!-- الوصف -->
+              <div class="mb-6">
+                <h5 class="text-light font-semibold text-sm mb-3 opacity-80" [class.text-right]="currentLanguage === 'ar'">
+                  {{ currentLanguage === 'en' ? 'Key Achievements:' : 'الإنجازات الرئيسية:' }}
+                </h5>
+                <ul class="space-y-2" [class.text-right]="currentLanguage === 'ar'">
+                  <li 
+                    *ngFor="let desc of (currentLanguage === 'en' ? exp.description.en : exp.description.ar)"
+                    class="text-gray text-sm leading-relaxed flex items-start gap-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    [class.font-custom]="currentLanguage === 'ar'"
+                    [class.flex-row-reverse]="currentLanguage === 'ar'">
+                    <div class="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                    <span>{{ desc }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- التقنيات المستخدمة -->
+              <div class="mt-auto">
+                <h5 class="text-light font-semibold text-sm mb-3 opacity-80" [class.text-right]="currentLanguage === 'ar'">
+                  {{ currentLanguage === 'en' ? 'Technologies:' : 'التقنيات المستخدمة:' }}
+                </h5>
+                <div class="flex flex-wrap gap-2" [class.justify-end]="currentLanguage === 'ar'">
+                  <span 
+                    *ngFor="let tech of (currentLanguage === 'en' ? exp.technologies.en : exp.technologies.ar)"
+                    class="px-3 py-1 bg-accent/10 text-accent text-xs font-medium rounded-full border border-accent/20 hover:bg-accent/20 transition-colors duration-200">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover Effect Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- التقنيات المستخدمة -->
-      <p class="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-light font-semibold font-sans">
-        {{ currentLanguage === 'en' ? 'Technologies Used:' : 'التقنيات المستخدمة' }}
-      </p>
-      <div
-        [ngClass]="{'rtl': currentLanguage === 'ar', 'ltr': currentLanguage === 'en'}"
-        dir="{{ currentLanguage === 'ar' ? 'rtl' : 'ltr' }}"
-      >
-        <ul class="list-disc pl-5 rtl:pr-5 space-y-1">
-          <li
-            *ngFor="let tech of (currentLanguage === 'en' ? exp.technologies.en : exp.technologies.ar)"
-            class="text-[#f4ff95] font-mono leading-relaxed text-base sm:text-lg md:text-xl lg:text-xl"
-          >
-            {{ tech }}
-          </li>
-        </ul>
-      </div>
+      <!-- زر التنقل للأمام -->
+      <button
+        *ngIf="experience.length > itemsToShow"
+        (click)="nextExperience()"
+        [disabled]="!canNavigateNext()"
+        [attr.aria-label]="currentLanguage === 'en' ? 'Next experience' : 'الخبرة التالية'"
+        [class.right-0]="currentLanguage === 'en'"
+        [class.left-0]="currentLanguage === 'ar'"
+        [class.translate-x-4]="currentLanguage === 'en'"
+        [class.-translate-x-4]="currentLanguage === 'ar'"
+        class="absolute top-1/2 transform -translate-y-1/2 z-20 p-3 bg-primary/80 backdrop-blur-sm rounded-full text-accent hover:bg-primary hover:scale-110 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:bg-gray/20 transition-all duration-300 shadow-lg">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path 
+            [attr.d]="currentLanguage === 'en' ? 'M9 5l7 7-7 7' : 'M15 19l-7-7 7-7'"
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round">
+          </path>
+        </svg>
+      </button>
+    </div>
 
-      <div  class="w-full h-[1px] bg-yellow-400 opacity-50 my-8"></div>
+    <!-- مؤشر التنقل -->
+    <div *ngIf="experience.length > itemsToShow" class="flex justify-center mt-8 gap-2">
+      
+<div 
+  *ngFor="let exp of experience; let i = index"
+  (click)="startIndex = i; updateDisplayedExperiences()"
+  [ngClass]="{
+    'bg-accent': i >= startIndex && i < startIndex + itemsToShow,
+    'bg-gray-500/30': !(i >= startIndex && i < startIndex + itemsToShow)
+  }"
+  class="w-2 h-2 rounded-full cursor-pointer transition-colors duration-300 hover:bg-accent/70">
+</div>
 
     </div>
   </div>
-  <ng-template #noData>
-    <div class="text-center text-light text-xl font-bold py-6">
-      {{ currentLanguage === 'en' ? 'No experience data available.' : 'لا توجد بيانات خبرة متاحة.' }}
-    </div>
-  </ng-template>
-</div>
