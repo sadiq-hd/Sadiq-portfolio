@@ -15,107 +15,81 @@ export class CertificationsComponent {
   itemsToShow = 3; // عدد الشهادات الافتراضي
   isBrowser: boolean;
   displayedCertifications: { name: string; nameAr: string; description: string; descriptionAr: string; image: string }[] = [];
-  certifications = [
-    {
-      name: 'Back-End Development',
-      nameAr: 'تطوير الواجهة الخلفية',
-      description: 'Comprehensive back-end development course.',
-      descriptionAr: 'دورة شاملة لتطوير الواجهة الخلفية.',
-      image: 'assets/certifications/backend.jpg',
-    },
-    {
-      name: 'Front-End Development',
-      nameAr: 'تطوير الواجهة الأمامية',
-      description: 'Learn front-end development with modern technologies.',
-      descriptionAr: 'تعلم تطوير الواجهة الأمامية باستخدام تقنيات حديثة.',
-      image: 'assets/certifications/frontend.jpg',
-    },
-    {
-      name: 'ASP.NET Development',
-      nameAr: 'تطوير ASP.NET',
-      description: 'Comprehensive course on ASP.NET development.',
-      descriptionAr: 'دورة شاملة عن تطوير ASP.NET.',
-      image: 'assets/certifications/asp.jpg',
-    },
-    {
-      name: 'Learn Machine',
-      nameAr: 'تعلم الآلة',
-      description: 'Comprehensive course on machine learning.',
-      descriptionAr: 'دورة شاملة عن تعلم الآلة.',
-      image: 'assets/certifications/learn-machean.jpg',
-    },
-    {
-      name: 'AI Development',
-      nameAr: 'تطوير الذكاء الاصطناعي',
-      description: 'Advanced AI development techniques.',
-      descriptionAr: 'تقنيات متقدمة لتطوير الذكاء الاصطناعي.',
-      image: 'assets/certifications/machin-ai.jpg',
-    },
-    {
-      name: 'UX Design',
-      nameAr: 'تصميم تجربة المستخدم',
-      description: 'Comprehensive UX design course.',
-      descriptionAr: 'دورة شاملة لتصميم تجربة المستخدم.',
-      image: 'assets/certifications/UX.jpg',
-    },
-    {
-      name: 'Web Application Development',
-      nameAr: 'تطوير تطبيقات الويب',
-      description: 'Comprehensive course on web application development.',
-      descriptionAr: 'دورة شاملة عن تطوير تطبيقات الويب.',
-      image: 'assets/certifications/web-app.jpg',
-    },
-    {
-      name: 'JavaScript Development',
-      nameAr: 'تطوير جافاسكريبت',
-      description: 'Master the art of JavaScript development.',
-      descriptionAr: 'إتقان فن تطوير جافاسكريبت.',
-      image: 'assets/certifications/javascript.jpg',
-    },
-    
-    {
-      name: 'Dart Programming',
-      nameAr: 'برمجة Dart',
-      description: 'Learn Dart programming for Flutter development.',
-      descriptionAr: 'تعلم برمجة Dart لتطوير Flutter.',
-      image: 'assets/certifications/Dart.jpg',
-    },
-    {
-      name: 'Flutter Development',
-      nameAr: 'تطوير Flutter',
-      description: 'Master building apps with Flutter.',
-      descriptionAr: 'إتقان بناء التطبيقات باستخدام Flutter.',
-      image: 'assets/certifications/flutter.jpg',
-    },
-    {
-      name: 'Flutter Development 2',
-      nameAr: 'تطوير Flutter 2',
-      description: 'Master building apps with Flutter.',
-      descriptionAr: 'إتقان بناء التطبيقات باستخدام Flutter.',
-      image: 'assets/certifications/flutter2.jpg',
-    },
-    {
-      name: 'Cybersecurity Essentials',
-      nameAr: 'أساسيات الأمن السيبراني',
-      description: 'Understand the essentials of cybersecurity.',
-      descriptionAr: 'فهم أساسيات الأمن السيبراني.',
-      image: 'assets/certifications/Cyper.jpg',
-    },
-    {
-      name: 'Java Programming',
-      nameAr: 'برمجة جافا',
-      description: 'Learn Java programming for various applications.',
-      descriptionAr: 'تعلم برمجة جافا للتطبيقات المختلفة.',
-      image: 'assets/certifications/java.jpg',
-    },
-    {
-      name: 'Git ',
-      nameAr: ' Git',
-      description: ' Git for version control and collaboration.',
-      descriptionAr: ' Git للتحكم في الإصدارات والتعاون.',
-      image: 'assets/certifications/git.jpg',
-    },
-  ];
+ recognitions = [
+  {
+    name: 'Annual Recognition & Reward Program',
+    nameAr: 'برنامج التكريم والمكافآت السنوي',
+    description:
+      'Recognized for successfully launching the ATID Registration Platform and contributing to a cost avoidance exceeding $100 Million.',
+    descriptionAr:
+      'تكريم نظير الإطلاق الناجح لمنصة ATID والمساهمة في تحقيق وفر تجاوز 100 مليون دولار.',
+    year: '2026'
+  },
+
+  {
+    name: 'RASD Star Ambassador Award',
+    nameAr: 'تكريم RASD Star Ambassador',
+    description:
+      'Recognized for the successful launch of the ATID Registration Platform within Research & Analytical Services Department.',
+    descriptionAr:
+      'تكريم نظير الإطلاق الناجح لمنصة ATID ضمن إدارة Research & Analytical Services.',
+    year: '2025'
+  },
+
+  {
+    name: 'Certificate of Appreciation',
+    nameAr: 'شهادة تقدير',
+    description:
+      'Awarded for dedication and outstanding contributions to the TOC ISA Cybersecurity Campaign.',
+    descriptionAr:
+      'منحت تقديراً للمساهمات المتميزة والمشاركة الفعالة في حملة الأمن السيبراني TOC ISA.',
+    year: '2025'
+  }
+];
+certifications = [
+  {
+    name: 'Front-End Development',
+    nameAr: 'تطوير الواجهة الأمامية',
+    description: 'Front-end development with modern technologies.',
+    descriptionAr: 'تطوير الواجهة الأمامية باستخدام تقنيات حديثة.',
+    image: 'assets/certifications/frontend.jpg',
+  },
+  {
+    name: 'Back-End Development',
+    nameAr: 'تطوير الواجهة الخلفية',
+    description: 'Back-end development fundamentals and practices.',
+    descriptionAr: 'أساسيات وممارسات تطوير الواجهة الخلفية.',
+    image: 'assets/certifications/backend.jpg',
+  },
+  {
+    name: 'ASP.NET Development',
+    nameAr: 'تطوير ASP.NET',
+    description: 'ASP.NET web application development.',
+    descriptionAr: 'تطوير تطبيقات الويب باستخدام ASP.NET.',
+    image: 'assets/certifications/asp.jpg',
+  },
+  {
+    name: 'UX Design',
+    nameAr: 'تصميم تجربة المستخدم',
+    description: 'User experience design principles.',
+    descriptionAr: 'مبادئ تصميم تجربة المستخدم.',
+    image: 'assets/certifications/UX.jpg',
+  },
+  {
+    name: 'JavaScript Development',
+    nameAr: 'تطوير جافاسكريبت',
+    description: 'JavaScript development fundamentals.',
+    descriptionAr: 'أساسيات تطوير جافاسكريبت.',
+    image: 'assets/certifications/javascript.jpg',
+  },
+  {
+    name: 'Git',
+    nameAr: 'Git',
+    description: 'Version control and collaboration.',
+    descriptionAr: 'التحكم في الإصدارات والتعاون البرمجي.',
+    image: 'assets/certifications/git.jpg',
+  }
+];
   
 
   constructor(

@@ -5,12 +5,13 @@ import { TranslationService } from '../../services/translation.service';
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule], // Import CommonModule to use *ngFor
+  imports: [CommonModule],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent {
   currentLanguage: 'en' | 'ar' = 'en';
+
   constructor(private translationService: TranslationService) {}
 
   skillImages = [
@@ -23,17 +24,41 @@ export class SkillsComponent {
     'image 18.svg',
     'image2.svg',
     'image3.svg',
-    'laravel.svg',
     'MySQL.svg',
-    'PHP.svg',
-    'image 10.svg',
-
   ];
 
-  skillTexts = [
-    ' Git','TypeScript' , 'CSS', 'Python', 'React ',
-    'Angular', 'Bootstrap', 'HTML', 'JavaScript', 'Laravel', 'MySQL',  'PHP','Java',
+  frontendSkills = [
+    'Angular',
+    'React',
+    'TypeScript',
+    'JavaScript',
+    'HTML5',
+    'CSS3',
+    'Tailwind CSS',
+    'Bootstrap'
   ];
+
+  backendSkills = [
+    'ASP.NET',
+    'ASP.NET Core',
+    'Node.js',
+    'REST APIs',
+    'SQL Server',
+    'MySQL',
+    'Firebase Firestore'
+  ];
+
+  toolsSkills = [
+    'Git',
+    'GitHub',
+    'Visual Studio',
+    'VS Code',
+    'Figma',
+    'UI/UX',
+    'Responsive Design',
+    'Digital Signage'
+  ];
+
   ngOnInit(): void {
     this.translationService.currentLanguage$.subscribe(language => {
       this.currentLanguage = language;

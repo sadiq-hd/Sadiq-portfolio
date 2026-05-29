@@ -1,33 +1,71 @@
-<div [ngClass]="{'text-right': currentLanguage === 'ar', 'text-left': currentLanguage === 'en'}" class="container mx-auto px-2 sm:px-4 py-4 sm:py-8 overflow-hidden">
-    <h2 class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
-      {{ currentLanguage === 'en' ? 'Skills' : 'مهاراتي' }}
-    </h2>
-    <br>
-    
-    <!-- قسم الصور المتحركة -->
-    <div class="marquee-wrapper overflow-hidden relative mb-8"> <!-- تعديل المسافة باستخدام mb-8 -->
-      <div class="marquee-content flex items-center space-x-4 sm:space-x-6 md:space-x-8 animate-marquee">
-        <ng-container *ngFor="let image of skillImages">
-          <img [src]="'assets/skilles/' + image" 
-               alt="Skill" 
-               class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 
-                      hover:scale-110 transition-transform duration-500">
-        </ng-container>
-        <ng-container *ngFor="let image of skillImages">
-          <img [src]="'assets/skilles/' + image" 
-               alt="Skill" 
-               class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 
-                      hover:scale-110 transition-transform duration-500">
-        </ng-container>
-      </div>
-    </div>
-  
-    <!-- قسم النصوص المتحركة -->
-    <div class="marquee-wrapper overflow-hidden relative">
-      <div class="marquee-content flex items-center space-x-4 text-[#EAFF00] text-xl font-mono animate-marquee">
-        <span *ngFor="let text of skillTexts">{{ text }} | </span>
-        <span *ngFor="let text of skillTexts">{{ text }} | </span>
-      </div>
+<div
+  class="container mx-auto px-4 py-8 sm:py-12 overflow-hidden"
+  [attr.dir]="currentLanguage === 'ar' ? 'rtl' : 'ltr'">
+
+  <h2
+    class="text-light text-2xl sm:text-3xl md:text-4xl font-bold mb-8"
+    [class.text-right]="currentLanguage === 'ar'"
+    [class.text-left]="currentLanguage === 'en'">
+    {{ currentLanguage === 'en' ? 'Skills' : 'مهاراتي' }}
+  </h2>
+
+  <!-- الصور المتحركة -->
+  <div class="marquee-wrapper overflow-hidden relative mb-8">
+    <div class="marquee-content flex items-center gap-6 sm:gap-8 animate-marquee">
+      <ng-container *ngFor="let image of skillImages">
+        <img
+          [src]="'assets/skilles/' + image"
+          alt="Skill"
+          class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 hover:scale-110 transition-transform duration-500">
+      </ng-container>
+
+      <ng-container *ngFor="let image of skillImages">
+        <img
+          [src]="'assets/skilles/' + image"
+          alt="Skill"
+          class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 hover:scale-110 transition-transform duration-500">
+      </ng-container>
     </div>
   </div>
-  
+
+  <!-- كروت المهارات -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div class="bg-dark-blue/50 border border-white/10 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+      <h3 class="text-accent text-xl font-bold mb-4">
+        {{ currentLanguage === 'en' ? 'Frontend' : 'الواجهة الأمامية' }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let skill of frontendSkills"
+          class="px-3 py-1 rounded-full bg-accent/10 text-accent text-sm border border-accent/20">
+          {{ skill }}
+        </span>
+      </div>
+    </div>
+
+    <div class="bg-dark-blue/50 border border-white/10 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+      <h3 class="text-accent text-xl font-bold mb-4">
+        {{ currentLanguage === 'en' ? 'Backend & Database' : 'الخلفية وقواعد البيانات' }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let skill of backendSkills"
+          class="px-3 py-1 rounded-full bg-accent/10 text-accent text-sm border border-accent/20">
+          {{ skill }}
+        </span>
+      </div>
+    </div>
+
+    <div class="bg-dark-blue/50 border border-white/10 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+      <h3 class="text-accent text-xl font-bold mb-4">
+        {{ currentLanguage === 'en' ? 'Tools & Specialties' : 'الأدوات والتخصصات' }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let skill of toolsSkills"
+          class="px-3 py-1 rounded-full bg-accent/10 text-accent text-sm border border-accent/20">
+          {{ skill }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

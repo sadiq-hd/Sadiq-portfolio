@@ -73,19 +73,41 @@ export class ExperienceComponent implements OnInit, OnDestroy {
         ar: 'مهندس برمجيات'
       },
       description: {
-        en: [
-          'Collaborating with IT and engineering teams to enhance internal tools and applications',
-          'Diagnosing technical issues and escalating tickets for enterprise-level systems'
-        ],
-        ar: [
-          'التعاون مع فرق تقنية المعلومات والهندسة لتحسين الأدوات والتطبيقات الداخلية',
-          'تشخيص المشاكل التقنية وتصعيد التذاكر لأنظمة المؤسسات'
-        ]
-      },
+  en: [
+    'Developed and maintained enterprise web applications and internal digital solutions',
+    'Designed interactive digital signage experiences for large-format display environments',
+    'Built building access card generation and management tools',
+    'Developed feedback systems, meeting room displays, and event-driven experiences',
+    'Collaborated with multiple business units to improve operational efficiency and user experience'
+  ],
+
+  ar: [
+    'تطوير وصيانة تطبيقات ويب مؤسسية وحلول رقمية داخلية',
+    'تصميم تجارب شاشات تفاعلية مخصصة للشاشات الكبيرة',
+    'تطوير أنظمة وأدوات إصدار بطاقات الدخول للمباني',
+    'تطوير أنظمة التقييم وشاشات قاعات الاجتماعات وتجارب الفعاليات',
+    'التعاون مع عدة إدارات لتحسين الكفاءة التشغيلية وتجربة المستخدم'
+  ]
+},
       technologies: {
-        en: ['Enterprise Systems', 'Technical Support', 'System Diagnostics'],
-        ar: ['أنظمة المؤسسات', 'الدعم التقني', 'تشخيص الأنظمة']
-      },
+  en: [
+    'ASP.NET',
+    'JavaScript',
+    'HTML',
+    'CSS',
+    'SQL Server',
+    'Digital Signage'
+  ],
+
+  ar: [
+    'ASP.NET',
+    'JavaScript',
+    'HTML',
+    'CSS',
+    'SQL Server',
+    'Digital Signage'
+  ]
+},
       type: 'full-time',
       location: {
         en: 'Saudi Arabia',
@@ -107,17 +129,20 @@ export class ExperienceComponent implements OnInit, OnDestroy {
         ar: 'مطور ويب متكامل'
       },
       description: {
-        en: [
-          'Redesigned the Saudi Water Authority portal using Angular and ASP.NET',
-          'Delivered secure license features with dynamic QR generation',
-          'Engaged directly with clients to implement tailored solutions'
-        ],
-        ar: [
-          'إعادة تصميم موقع هيئة المياه السعودية باستخدام Angular و ASP.NET',
-          'تطوير خدمات الرخص الآمنة مع إنشاء QR ديناميكي',
-          'التواصل المباشر مع العملاء لتنفيذ حلول مخصصة'
-        ]
-      },
+  en: [
+    'Developed and enhanced enterprise web applications using Angular and ASP.NET',
+    'Implemented secure licensing and verification services',
+    'Built responsive user interfaces and backend integrations',
+    'Worked directly with stakeholders to deliver business-focused solutions'
+  ],
+
+  ar: [
+    'تطوير وتحسين تطبيقات ويب مؤسسية باستخدام Angular و ASP.NET',
+    'تطوير خدمات التحقق والرخص الآمنة',
+    'بناء واجهات مستخدم متجاوبة وربطها بالخدمات الخلفية',
+    'العمل المباشر مع العملاء لتقديم حلول تخدم الأعمال'
+  ]
+},
       technologies: {
         en: ['Angular +16', 'ASP.NET', 'Tailwind', 'Postman', 'SQL Server'],
         ar: ['Angular +16', 'ASP.NET', 'Tailwind', 'Postman', 'SQL Server']
@@ -163,40 +188,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       },
       logo: 'assets/companies/barri-logo.png'
     },
-    {
-      company: {
-        en: 'Atlas Al Sharqiyah Est.',
-        ar: 'مؤسسة أطلس الشرقية'
-      },
-      date: {
-        en: 'Feb 2022 – Jun 2022',
-        ar: 'فبراير 2022 – يونيو 2022'
-      },
-      role: {
-        en: 'Computer Assembly Worker',
-        ar: 'عامل تجميع أجهزة الكمبيوتر'
-      },
-      description: {
-        en: [
-          'Assembled computer components and ensured basic hardware functionality',
-          'Performed routine quality checks and collaborated with technicians on-site and remotely'
-        ],
-        ar: [
-          'تجميع مكونات أجهزة الكمبيوتر وضمان الوظائف الأساسية للأجهزة',
-          'إجراء فحوصات الجودة الروتينية والتعاون مع الفنيين في الموقع وعن بُعد'
-        ]
-      },
-      technologies: {
-        en: ['Hardware Assembly', 'Quality Control', 'Technical Support'],
-        ar: ['تجميع الأجهزة', 'مراقبة الجودة', 'الدعم التقني']
-      },
-      type: 'part-time',
-      location: {
-        en: 'Eastern Province',
-        ar: 'المنطقة الشرقية'
-      },
-      logo: 'assets/companies/atlas-logo.png'
-    }
+    
   ];
 
   displayedExperiences: Experience[] = [];

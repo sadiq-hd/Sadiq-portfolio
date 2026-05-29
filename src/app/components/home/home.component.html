@@ -1,9 +1,61 @@
-<div class="container mx-auto px-4 py-8">
-  <section class="text-center py-16 relative">
-    <!-- The red lines are just to show the desired width -->
-    <img 
-      [src]="currentLanguage === 'en' ? 'assets/img/english-image.png' : 'assets/img/arabic-image.png'"
-      alt="Sadiq Aldubaisi" 
-      class="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-[1500px] xl:max-w-[1536px] 2xl:max-w-[1800px] mx-auto rounded-3xl shadow-lg animate-fade-in transform transition-transform duration-500 hover:scale-105">
+<div class="container mx-auto px-4 py-10">
+  <section
+    class="relative overflow-hidden rounded-[32px] border border-white/10 bg-dark-blue/70 backdrop-blur-xl px-6 py-14 sm:px-10 lg:px-16 shadow-2xl"
+    [attr.dir]="currentLanguage === 'ar' ? 'rtl' : 'ltr'">
+
+```
+<!-- Glow Effects -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+  <div class="absolute -top-24 -right-24 w-72 h-72 bg-accent rounded-full blur-[120px]"></div>
+  <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-500 rounded-full blur-[120px]"></div>
+</div>
+
+<div class="relative z-10 max-w-5xl mx-auto text-center">
+
+  <!-- Badge -->
+  <p class="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-semibold mb-6">
+    {{ currentLanguage === 'en' ? 'Software Engineer' : 'مهندس برمجيات' }}
+  </p>
+
+  <!-- Name -->
+  <h1 class="text-light font-extrabold leading-tight text-5xl sm:text-6xl lg:text-7xl mb-5">
+    {{ currentLanguage === 'en' ? 'Sadiq Aldubaisi' : 'صادق الدبيسي' }}
+  </h1>
+
+  <!-- Specialty -->
+  <h2 class="text-accent font-bold text-xl sm:text-2xl lg:text-3xl mb-6">
+    {{ currentLanguage === 'en'
+      ? 'Enterprise Applications • Angular • ASP.NET'
+      : 'تطبيقات مؤسسية • Angular • ASP.NET'
+    }}
+  </h2>
+
+  <!-- Short Intro -->
+  <p class="text-gray max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-10">
+    {{ currentLanguage === 'en'
+      ? 'Building practical web applications and business-focused digital solutions.'
+      : 'بناء تطبيقات ويب عملية وحلول رقمية تخدم الأعمال والمنشآت.'
+    }}
+  </p>
+
+  <!-- CTA -->
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+    <a href="#projects"
+       class="w-full sm:w-auto px-8 py-3 rounded-xl bg-accent text-primary font-bold hover:scale-105 transition-transform duration-300">
+      {{ currentLanguage === 'en' ? 'Explore Projects' : 'استعرض المشاريع' }}
+    </a>
+
+    <a href="assets/Sadiq Aldubaisi Cv.pdf"
+       target="_blank"
+       class="w-full sm:w-auto px-8 py-3 rounded-xl border border-white/20 text-light font-semibold hover:bg-white/10 transition-all duration-300">
+      {{ currentLanguage === 'en' ? 'Download CV' : 'تحميل السيرة الذاتية' }}
+    </a>
+
+  </div>
+
+</div>
+```
+
   </section>
 </div>
